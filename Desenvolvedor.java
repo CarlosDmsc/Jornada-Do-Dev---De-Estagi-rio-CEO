@@ -22,13 +22,50 @@ public class Desenvolvedor {
         this.habilidades = new ArrayList<>();
     }
 
-    public void trabalharEmProjeto(Projeto projeto) {
-        verificarCansaco();
-        projeto.concluirProjeto(this);
-        aumentarCansaco(projeto.getDificuldade() * 2);
-        passarDia();
-        mostrarHUD();
+    public void forcarAumentoCansaco(int valor) {
+        cansaco += valor;
+        if (cansaco > cansacoMaximo) cansaco = cansacoMaximo;
     }
+
+    public void forcarAumentoDias(int valor) {
+        dias += valor;
+    }
+
+
+    public void trabalharEmProjeto(Projeto projeto) {
+    verificarCansaco();
+    projeto.concluirProjeto(this);
+
+    // Chance de 20% de desafio
+    Random r = new Random();
+    int chance = r.nextInt(100);
+
+    if (chance < 20) {
+        Desafio d = gerarDesafioAleatorio();
+        d.aplicarConsequencia(this);
+    }
+
+    aumentarCansaco(projeto.getDificuldade() * 2);
+    passarDia();
+    mostrarHUD();
+}
+
+    private Desafio gerarDesafioAleatorio() {
+    Random r = new Random();
+    int n = r.nextInt(4);
+
+    switch (n) {
+        case 0:
+            return new Desafio("Bug crítico no deploy", 15, 3, 1);
+        case 1:
+            return new Desafio("Servidor instável", 10, 2, 1);
+        case 2:
+            return new Desafio("Computador travou", 5, 1, 0);
+        default:
+            return new Desafio("Cliente mudou requisitos", 20, 4, 1);
+    }
+}
+
 
     public void estudar(String habilidade, String modo) {
         verificarCansaco();
@@ -98,7 +135,7 @@ public class Desenvolvedor {
             System.out.println("Derrota no Clash Royale. Uma penalidade foi aplicada.");
             cansaco = 0;
             dias++;
-            xp -= 10;
+            xp -= 50;
             if (xp < 0) xp = 0;
         }
 
