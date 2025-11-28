@@ -124,5 +124,5 @@ Progresso total da carreira
 
 # Autores:
 
-Carlos Roberto - 00000853313, carlosmdev11@gmail.com. 
+Carlos Roberto - 00000853313, carlosmdev11@gmail.com - https://www.linkedin.com/in/damasceno-neto-377516306/ .
 Bruno Cavalcanti - 00000853197, brunoc.wanderley01@gmail.com
