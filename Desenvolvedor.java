@@ -1,10 +1,13 @@
 package models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Desenvolvedor {
+public class Desenvolvedor implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String nome;
     private String nivel;
@@ -197,3 +200,4 @@ public class Desenvolvedor {
     public void adicionarXP(int valor) { xp += valor; }
     public String getNivel() { return nivel; }
 }
+
